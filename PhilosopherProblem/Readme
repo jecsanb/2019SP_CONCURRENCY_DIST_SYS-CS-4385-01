@@ -1,0 +1,19 @@
+CS 4385 - Concurrency and Distributed Systems Spring 2019
+Project: Dining Philosophers Problem
+Thursday, April 18, 2019
+Authors: Jecsan Blanco and Mary (Rachel) Van Pelt
+
+(With Makefile if make is installed)
+To compile:  "make"
+To run: "run"
+
+(without)
+To compile: run "javac Main.java"
+To run: run "java Main"
+
+
+Sources:
+Makefile sample: https://www.cs.swarthmore.edu/~newhall/unixhelp/javamakefiles.html
+Insight Into Semaphores:
+    https://www.geeksforgeeks.org/semaphore-in-java/
+
