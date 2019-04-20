@@ -3,15 +3,15 @@ public class Philosopher2 extends  Philosopher {
         super(id, forks);
     }
     //implements execution of algorithm 6.12
-    @Override
+  @Override
     public void run(){
         int rightFork = id;
-        int leftFork = (id + 1)%forks.length;
+        int leftFork = (id + 1) % forks.length;
         int i = 0;
         while(i != MIN_EAT){ //to infinity if i is -1
             try{
                 think();
-                if(id == 4){
+                if(id == forks.length -1){
                     forks[(leftFork)].acquire();
                     System.out.printf("Philosopher %s picked up fork: leftFork.\n",id+1);
                     forks[(rightFork)].acquire();
