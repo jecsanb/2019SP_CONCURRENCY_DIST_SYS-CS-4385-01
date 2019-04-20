@@ -1,7 +1,7 @@
 /**
  * Project: Dining Philosophers Problem v2
- * @author  Jecsan B
- * @author  Rachel v.
+ * @author  Jecsan Blanco
+ * @author  Mary (Rachel) Van Pelt
  * Ueses philosopher2 which  implements  algo 6.11
  */
 public class MainV2 {
