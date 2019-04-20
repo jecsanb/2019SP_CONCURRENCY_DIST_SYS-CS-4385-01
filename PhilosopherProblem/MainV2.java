@@ -1,13 +1,9 @@
-/**
- * Think and Eat v1
- * By Jecsan B  and Rachel V.
- */
-class Main {
+public class MainV2 {
     public static void main(String[] args) throws InterruptedException {
-        int count = args.length < 1 ? 5 : Integer.parseInt(args[0]);
+       int count = args.length == 0 ? 5 : Integer.parseInt(args[0]);
         System.out.println("Starting..");
         //Data containers
-        Philosopher[] philosophers = new Philosopher[count];
+        Philosopher2[] philosophers = new Philosopher2[count];
         Fork[] forks = new Fork[philosophers.length];
         // Make the table
         for (int id = 0; id < philosophers.length; ++id) {
@@ -15,15 +11,16 @@ class Main {
         }
         // Seat the philosophers
         for (int id = 0; id < philosophers.length; ++id) {
-            philosophers[id] = new Philosopher(id, forks);
+            philosophers[id] = new Philosopher2(id, forks);
             //let them do what they do
             philosophers[id].start();
         }
         // let them go home
-        for (Philosopher phil : philosophers) {
+        for (Philosopher2 phil : philosophers) {
             phil.join();
         }
         System.out.println("Done..");
 
     }
 }
+
