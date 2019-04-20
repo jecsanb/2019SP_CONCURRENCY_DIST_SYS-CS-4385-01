@@ -11,6 +11,7 @@ public class Philosopher extends Thread {
     final int MIN_EAT;
     final int THINK_DELAY;
     final int EAT_DELAY;
+
     // Creates a philosopher  with an id and gives it access to the forks
     Philosopher(int id, Fork[] forks) {
         this.forks = forks;
@@ -19,7 +20,8 @@ public class Philosopher extends Thread {
         this.EAT_DELAY = 100;
         this.THINK_DELAY = 100;
     }
-    Philosopher(int id, Fork[] forks,int minEat,int thinkDelay,int eatDelay){
+
+    Philosopher(int id, Fork[] forks, int minEat, int thinkDelay, int eatDelay) {
         this.forks = forks;
         this.id = id;
         this.MIN_EAT = minEat;
@@ -39,7 +41,7 @@ public class Philosopher extends Thread {
                 forks[rightFork].acquire();
                 System.out.printf("Philosopher %s picked up fork: rightFork.\n", id + 1);
                 forks[(leftFork)].acquire();
-                System.out.printf("Philosopher %s picked up fork: leftFork.\n", id + 1 );
+                System.out.printf("Philosopher %s picked up fork: leftFork.\n", id + 1);
                 eat();
             } catch (InterruptedException ignored) {
             }
@@ -48,6 +50,7 @@ public class Philosopher extends Thread {
             ++i;
         }
     }
+
     void think() throws InterruptedException {
         System.out.printf("Philosopher %s: Thinking.\n", id);
         sleep((int) (Math.random() * THINK_DELAY));
