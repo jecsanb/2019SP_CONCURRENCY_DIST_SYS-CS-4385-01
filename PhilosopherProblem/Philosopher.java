@@ -1,3 +1,10 @@
+/**
+ * Five philosophers either eat or think
+ * They must have two forks to eat
+ * Can only use forks on either side of their plate
+ * Cannot forcefully obtain a fork (no preemption)
+ */
+
 public class Philosopher extends Thread {
     Fork[] forks;
     final int id;
@@ -20,7 +27,7 @@ public class Philosopher extends Thread {
         this.THINK_DELAY = thinkDelay;
     }
 
-    //execution of algorithm 6.10
+    //implements execution of algorithm 6.10
     @Override
     public void run() {
         int rightFork = id;

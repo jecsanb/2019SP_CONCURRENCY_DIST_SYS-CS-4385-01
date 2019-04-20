@@ -1,3 +1,9 @@
+/**
+ * Project: Dining Philosophers Problem v2
+ * @author  Jecsan B
+ * @author  Rachel v.
+ * Ueses philosopher2 which  implements  algo 6.11
+ */
 public class MainV2 {
     public static void main(String[] args) throws InterruptedException {
        int count = args.length == 0 ? 5 : Integer.parseInt(args[0]);
