@@ -6,30 +6,38 @@ public class Philosopher2 extends Philosopher {
     //implements execution of algorithm 6.12
     @Override
     public void run() {
-        int rightFork = id;
-        int leftFork = (id + 1) % forks.length;
+        int leftFork = id;
+        int rightFork = (id + 1) % forks.length;
         int i = 0;
         while (i != MIN_EAT) { //to infinity if i is -1
             try {
                 think();
                 if (id == forks.length - 1) {
-                    forks[(leftFork)].acquire();
-                    pickedUp(id,"leftFork");
-                    forks[(rightFork)].acquire();
-                    pickedUp(id,"rightFork");
-                } else {
                     forks[rightFork].acquire();
-                    pickedUp(id,"rightFork");
+                    System.out.printf("Philosopher %s picked up right Fork.\n", id);
                     forks[leftFork].acquire();
-                    pickedUp(id,"leftFork");
+                    System.out.printf("Philosopher %s picked up left Fork.\n", id);
+                } else {
+                    forks[(leftFork)].acquire();
+                    System.out.printf("Philosopher %s picked up left Fork.\n", id);
+                    forks[(rightFork)].acquire();
+                    System.out.printf("Philosopher %s picked up right Fork.\n", id);
                 }
                 eat();
             } catch (InterruptedException ignored) {
             }
-            forks[leftFork].release();
-            setDown(id,"leftFork");
-            forks[rightFork].release();
-            setDown(id,"rightFork");
+            if (id == forks.length - 1) {
+                forks[rightFork].release();
+                    System.out.printf("Philosopher %s dropped right Fork.\n", id);
+                forks[leftFork].release();
+                    System.out.printf("Philosopher %s dropped left Fork.\n", id);
+            }
+            else{
+                forks[leftFork].release();
+                    System.out.printf("Philosopher %s dropped left Fork.\n", id);
+                forks[rightFork].release();
+                    System.out.printf("Philosopher %s dropped right Fork.\n", id);
+            }
             ++i;
         }
     }

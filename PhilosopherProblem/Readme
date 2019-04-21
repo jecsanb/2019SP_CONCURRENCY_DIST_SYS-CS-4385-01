@@ -1,11 +1,11 @@
 CS 4385 - Concurrency and Distributed Systems Spring 2019
 Project: Dining Philosophers Problem
-Thursday, April 18, 2019
-Authors: Jecsan Blanco and Mary (Rachel) Van Pelt
+Thursday, April 21, 2019
+Authors: Jecsan Blanco and M. Rachel Van Pelt
 
 To compile:  "make"
 To run: "make run" this will run version 1 using algo 6.10
-        "make run2" this will run version 2 using algo 6.10
+        "make run2" this will run version 2 using algo 6.12
         "make run3" this will run version 3 using ????
 
 (without)
@@ -18,5 +18,5 @@ Sources:
 Makefile sample: https://www.cs.swarthmore.edu/~newhall/unixhelp/javamakefiles.html
 Insight Into Semaphores:
     https://www.geeksforgeeks.org/semaphore-in-java/
-    The book.
+    Text book, chapter 6.
 

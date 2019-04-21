@@ -3,7 +3,7 @@
  *
  * @author Jecsan B
  * @author Rachel v.
- * * Ueses philosopher2 which  implements  algo 6.10
+ * * Uses philosopher2 which implements algorithm 6.10
  */
 class Main {
     public static void main(String[] args) throws InterruptedException {
