@@ -26,10 +26,10 @@ public class Philosopher2 extends Philosopher {
                 eat();
             } catch (InterruptedException ignored) {
             }
-            forks[rightFork].release();
-            setDown(id,"rightFork");
             forks[leftFork].release();
             setDown(id,"leftFork");
+            forks[rightFork].release();
+            setDown(id,"rightFork");
             ++i;
         }
     }
