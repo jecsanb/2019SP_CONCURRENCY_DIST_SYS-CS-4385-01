@@ -39,27 +39,29 @@ public class Philosopher extends Thread {
             try {
                 think();
                 forks[rightFork].acquire();
-                pickedUp(id,"rightFork");
+                pickedUp(id, "rightFork");
                 forks[(leftFork)].acquire();
-                pickedUp(id,"leftFork");
+                pickedUp(id, "leftFork");
                 eat();
             } catch (InterruptedException ignored) {
             }
             forks[rightFork].release();
-            setDown(id,"rightFork");
+            setDown(id, "rightFork");
             forks[leftFork].release();
-            setDown(id,"leftFork");
+            setDown(id, "leftFork");
             ++i;
         }
     }
 
-    synchronized void  pickedUp(int id, String fork){
-        System.out.printf("Philosopher %s picked up %s\n", id ,fork);
+    synchronized void pickedUp(int id, String fork) {
+        System.out.printf("Philosopher %s picked up %s\n", id, fork);
     }
-    synchronized void  setDown(int id, String fork){
-        System.out.printf("Philosopher %s set down  %s\n", id ,fork);
+
+    synchronized void setDown(int id, String fork) {
+        System.out.printf("Philosopher %s set down  %s\n", id, fork);
     }
-    synchronized void  think() throws InterruptedException {
+
+    synchronized void think() throws InterruptedException {
         System.out.printf("Philosopher %s: Thinking.\n", id);
         sleep((int) (Math.random() * THINK_DELAY));
     }

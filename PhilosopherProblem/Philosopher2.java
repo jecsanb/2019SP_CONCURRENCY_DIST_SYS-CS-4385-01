@@ -14,22 +14,22 @@ public class Philosopher2 extends Philosopher {
                 think();
                 if (id == forks.length - 1) {
                     forks[(leftFork)].acquire();
-                    pickedUp(id,"leftFork");
+                    pickedUp(id, "leftFork");
                     forks[(rightFork)].acquire();
-                    pickedUp(id,"rightFork");
+                    pickedUp(id, "rightFork");
                 } else {
                     forks[rightFork].acquire();
-                    pickedUp(id,"rightFork");
+                    pickedUp(id, "rightFork");
                     forks[leftFork].acquire();
-                    pickedUp(id,"leftFork");
+                    pickedUp(id, "leftFork");
                 }
                 eat();
             } catch (InterruptedException ignored) {
             }
             forks[leftFork].release();
-            setDown(id,"leftFork");
+            setDown(id, "leftFork");
             forks[rightFork].release();
-            setDown(id,"rightFork");
+            setDown(id, "rightFork");
             ++i;
         }
     }
