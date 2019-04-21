@@ -14,20 +14,22 @@ public class Philosopher2 extends Philosopher {
                 think();
                 if (id == forks.length - 1) {
                     forks[(leftFork)].acquire();
-                    System.out.printf("Philosopher %s picked up fork: leftFork.\n", id + 1);
+                    pickedUp(id,"leftFork");
                     forks[(rightFork)].acquire();
-                    System.out.printf("Philosopher %s picked up fork: rightFork.\n", id + 1);
+                    pickedUp(id,"rightFork");
                 } else {
                     forks[rightFork].acquire();
-                    System.out.printf("Philosopher %s picked up fork: rightFork.\n", id + 1);
+                    pickedUp(id,"rightFork");
                     forks[leftFork].acquire();
-                    System.out.printf("Philosopher %s picked up fork: leftFork.\n", id + 1);
+                    pickedUp(id,"leftFork");
                 }
                 eat();
             } catch (InterruptedException ignored) {
             }
             forks[rightFork].release();
+            setDown(id,"rightFork");
             forks[leftFork].release();
+            setDown(id,"leftFork");
             ++i;
         }
     }

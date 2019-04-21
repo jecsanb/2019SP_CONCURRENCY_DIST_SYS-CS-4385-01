@@ -17,8 +17,8 @@ public class Philosopher extends Thread {
         this.forks = forks;
         this.id = id;
         this.MIN_EAT = -1; //infinity
-        this.EAT_DELAY = 100;
-        this.THINK_DELAY = 100;
+        this.EAT_DELAY = 1000;
+        this.THINK_DELAY = 1000;
     }
 
     Philosopher(int id, Fork[] forks, int minEat, int thinkDelay, int eatDelay) {
@@ -39,24 +39,32 @@ public class Philosopher extends Thread {
             try {
                 think();
                 forks[rightFork].acquire();
-                System.out.printf("Philosopher %s picked up fork: rightFork.\n", id + 1);
+                pickedUp(id,"rightFork");
                 forks[(leftFork)].acquire();
-                System.out.printf("Philosopher %s picked up fork: leftFork.\n", id + 1);
+                pickedUp(id,"leftFork");
                 eat();
             } catch (InterruptedException ignored) {
             }
             forks[rightFork].release();
+            setDown(id,"rightFork");
             forks[leftFork].release();
+            setDown(id,"leftFork");
             ++i;
         }
     }
 
-    void think() throws InterruptedException {
+    synchronized void  pickedUp(int id, String fork){
+        System.out.printf("Philosopher %s picked up %s\n", id ,fork);
+    }
+    synchronized void  setDown(int id, String fork){
+        System.out.printf("Philosopher %s set down  %s\n", id ,fork);
+    }
+    synchronized void  think() throws InterruptedException {
         System.out.printf("Philosopher %s: Thinking.\n", id);
         sleep((int) (Math.random() * THINK_DELAY));
     }
 
-    void eat() throws InterruptedException {
+    synchronized void eat() throws InterruptedException {
         System.out.printf("Philosopher %s: Eating.\n", id);
         sleep((int) (Math.random() * EAT_DELAY));
     }
