@@ -9,9 +9,6 @@ JC = javac
 CLASSES = \
         Main.java \
         MainV2.java \
-        Fork.java \
-        Philosopher.java \
-        Philosopher2.java
 
 default: classes
 
