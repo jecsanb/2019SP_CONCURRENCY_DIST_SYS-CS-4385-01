@@ -78,17 +78,17 @@ class Main {
             while (i != MIN_EAT) { // to infinity if i is -1
                 try {
                     think();
-                    forks[rightFork].acquire();
-                    pickedUp(id, "rightFork");
                     forks[(leftFork)].acquire();
                     pickedUp(id, "leftFork");
+                    forks[rightFork].acquire();
+                    pickedUp(id, "rightFork");
                     eat();
                 } catch (InterruptedException ignored) {
                 }
-                forks[rightFork].release();
-                setDown(id, "rightFork");
                 forks[leftFork].release();
                 setDown(id, "leftFork");
+                forks[rightFork].release();
+                setDown(id, "rightFork");
                 ++i;
             }
         }

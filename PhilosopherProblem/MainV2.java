@@ -44,23 +44,32 @@ public class MainV2  extends  Main {
                 try {
                     think();
                     if (id == forks.length - 1) {
-                        forks[(leftFork)].acquire();
-                        pickedUp(id, "leftFork");
-                        forks[(rightFork)].acquire();
-                        pickedUp(id, "rightFork");
-                    } else {
                         forks[rightFork].acquire();
                         pickedUp(id, "rightFork");
                         forks[leftFork].acquire();
                         pickedUp(id, "leftFork");
+                    } else {
+                        forks[(leftFork)].acquire();
+                        pickedUp(id, "leftFork");
+                        forks[(rightFork)].acquire();
+                        pickedUp(id, "rightFork");
                     }
                     eat();
                 } catch (InterruptedException ignored) {
                 }
-                forks[leftFork].release();
-                setDown(id, "leftFork");
-                forks[rightFork].release();
-                setDown(id, "rightFork");
+                if(id == forks.length -1){
+                    forks[rightFork].release();
+                    setDown(id, "rightFork");
+                    forks[leftFork].release();
+                    setDown(id, "leftFork");
+
+                }else{
+                    forks[leftFork].release();
+                    setDown(id, "leftFork");
+                    forks[rightFork].release();
+                    setDown(id, "rightFork");
+
+                }
                 ++i;
             }
         }
